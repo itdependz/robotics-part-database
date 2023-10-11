@@ -1,6 +1,7 @@
+import java.io.*;
 import java.util.*;
 public class main{
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Robotics Inventory Mangement System (RIMS)");
 
@@ -8,8 +9,8 @@ public class main{
         System.out.print("What is your team number? ");
         int teamNumber = input.nextInt();
         login obj = new login();
-        System.out.println(obj.checkRegisteredTeam(teamNumber));
-        
-
+        obj.loadDB();
+        obj.checkRegisteredTeam(teamNumber);
+        obj.uploadtoDB();
     }
 }

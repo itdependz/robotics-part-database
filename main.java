@@ -10,7 +10,10 @@ public class main{
         int teamNumber = input.nextInt();
         login obj = new login();
         obj.loadDB();
-        obj.checkRegisteredTeam(teamNumber);
+        if(obj.checkRegisteredTeam(teamNumber)==true){
+            File newInventory = new File("./secrets/team" + Integer.toString(teamNumber));
+            newInventory.createNewFile();
+        }
         obj.uploadtoDB();
     }
 }

@@ -7,7 +7,7 @@ public class login{
 
    }
 
-   public boolean checkRegisteredTeam(int team){
+   public boolean checkRegisteredTeam(int team) throws IOException{
     String teamString = Integer.toString(team);
     if(registeredTeams.indexOf(teamString)>-1){
         return true;
@@ -18,6 +18,7 @@ public class login{
         }
         else{
          registeredTeams = registeredTeams + " " + teamString;
+         return true;
         }
         return false;
     }
@@ -38,7 +39,9 @@ public class login{
     public String loadDB() throws IOException{
         File file = new File("./secrets/registeredTeams.txt");
         Scanner reader = new Scanner(file);
+        if(reader.hasNextLine()){
         registeredTeams = reader.nextLine();
+        }
         return registeredTeams;
     }
    }

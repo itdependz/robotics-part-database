@@ -10,7 +10,7 @@ public class login{
    public boolean checkRegisteredTeam(int team) throws IOException{
     String teamString = Integer.toString(team);
     if(registeredTeams.indexOf(teamString)>-1){
-        return true;
+        return false;
     }
     else{
         if(registeredTeams.equals("")){
@@ -43,5 +43,24 @@ public class login{
         registeredTeams = reader.nextLine();
         }
         return registeredTeams;
+    }
+
+
+    public boolean checkForCrendtials(int team) throws IOException{
+        File file = new File("./secrets/secrets" + Integer.toString(team)+ ".txt");
+        Scanner reader = new Scanner(file);
+        if(reader.hasNextLine()){
+            return true;
+        }
+        return false;
+    }
+
+    public void createCredentials(String mentorpass, String studentpass, int team)throws IOException{
+    BufferedWriter writer = new BufferedWriter(new FileWriter("./secrets/secrets" + Integer.toString(team) + ".txt"));
+    writer.write(mentorpass);
+    writer.newLine();
+    writer.write(studentpass);
+    
+    writer.close();
     }
    }

@@ -63,4 +63,29 @@ public class login{
     
     writer.close();
     }
+
+    public boolean validateMentorCredentials(String password, int team)throws IOException{
+        File file = new File("./secrets/secrets" + Integer.toString(team)+ ".txt");
+        Scanner reader = new Scanner(file);
+        reader.nextLine();
+        String mentorPass = reader.nextLine();
+        if(password.equals(mentorPass)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean validateStudentCredentials(String password, int team)throws IOException{
+        File file = new File("./secrets/secrets" + Integer.toString(team)+ ".txt");
+        Scanner reader = new Scanner(file);
+        String studentPass = reader.nextLine();
+        if(password.equals(studentPass)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
    }

@@ -50,9 +50,22 @@ public class main{
                 System.exit(0);
             }
             else{
-
+                System.out.println("Welcome student of team " + Integer.toString(teamNumber));
+                System.out.println("What is your password?");
+                String password = "";
+                while(obj.validateStudentCredentials(password, teamNumber)!=true){
+                password = input.next();
+                if(obj.validateStudentCredentials(password, teamNumber)==true){
+                    System.out.println("You successfully logged in!");
+                    Thread.sleep(2000);
+                    break;
+                }
+                else{
+                    System.out.println("Incorrect password, try again");
+                }
             }
-        }
+            }
+            }
         else{
            if(obj.checkForCrendtials(teamNumber)==false){
                 System.out.println("It looks like your team does not have any credentials created. Lets create  them now...");
@@ -69,9 +82,22 @@ public class main{
                 System.out.println("Credentials Succesfully created! Restart program to login as normal.");
             }
             else{
+                System.out.println("Welcome mentor of team " + Integer.toString(teamNumber));
+                System.out.println("What is your password?");
+                String password = "";
+                while(obj.validateMentorCredentials(password, teamNumber)){
+                password = input.next();
+                if(obj.validateMentorCredentials(password, teamNumber)==true){
+                    System.out.println("You successfully logged in!");
+                    Thread.sleep(2000);
+                    break;
+                }   
+                else{
+                    System.out.println("Incorrect password, try again");
+                } 
+                }
+            }
 
-            } 
         }
-
     }
 }

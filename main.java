@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.lang.Thread;
+import java.util.stream.*;
 public class main{
 
     public static void clearConsole() throws IOException, InterruptedException{

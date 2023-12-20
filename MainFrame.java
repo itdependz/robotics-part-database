@@ -2,7 +2,12 @@ package com.samarth;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -29,13 +34,28 @@ public class MainFrame {
 		panel.setBackground(Color.WHITE);
 		
 		JLabel title = new JLabel("Robotics Inventory Management System");
+		title.setFont(new Font("Sans-serif", Font.BOLD, 36));
 		panel.add(title);
 		
+		JPanel continuePanel = new JPanel();
+		continuePanel.setLayout(new FlowLayout(FlowLayout.CENTER,600, 100));
+		continuePanel.setBackground(Color.WHITE);
 		
-	}
-	
-	private static void add(JPanel panel, String center) {
-		// TODO Auto-generated method stub
+		panel.add(continuePanel);
+		
+		JButton next = new JButton("Continue");
+		next.setFont(new Font("Sans-serif", Font.PLAIN, 26));
+		next.setPreferredSize(new Dimension(200,100));
+		next.setToolTipText("Click to Continue");
+		next.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Button has been clicked");
+				}
+			});
+		continuePanel.add(next);
+		
+		
 		
 	}
 

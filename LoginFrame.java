@@ -1,12 +1,17 @@
 package com.samarth;
 
 import java.awt.Color;
+import java.util.*;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import javax.swing.*;
 
@@ -65,7 +70,24 @@ public class LoginFrame {
 		submit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(teamNumber.getText());
+				//System.out.println(teamNumber.getText());
+				//create folder and inside the folder will be all the products
+				
+				//create the folder
+				File file  = new File("C:/Users/shree/eclipse-workspace/RoboticsInventoryManager/src/com/samarth/" + teamNumber.getText());
+				if(file.exists()==false) {
+				file.mkdir();
+				//creates csv
+				try(FileWriter writer = new FileWriter("C:/Users/shree/eclipse-workspace/RoboticsInventoryManager/src/com/samarth/" + teamNumber.getText() + "/" + teamNumber.getText()+"Database.csv")){
+					writer.write("Product,Quantitiy,Link, Purchase Status, Outdated\n");
+					} catch(Exception e1) {
+						
+					}
+				}
+				//send to homepage frame
+				frame.setVisible(false);
+				HomeFrame home = new HomeFrame();
+				home.show();
 				}
 			});
 		submitPanel.add(submit);

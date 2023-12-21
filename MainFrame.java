@@ -50,7 +50,9 @@ public class MainFrame {
 		next.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button has been clicked");
+				frame.setVisible(false);
+				LoginFrame login = new LoginFrame();
+				login.show();
 				}
 			});
 		continuePanel.add(next);
